@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import './Home.css';
 import Navbar from '../../Components/Navbar/Navbar.jsx';
+import TitleCards from '../../Components/TitleCards/TitleCards.jsx';
 import hero_banner from '../../assets/posters/ballerina-movie.jpg';
 
 const Home = () => {
   const [playVideo, setPlayVideo] = useState(false);
 
   return (
+    <>
     <div className='home'>
       <Navbar />
       <div className="hero">
@@ -17,9 +19,8 @@ const Home = () => {
               title="Ballerina Trailer"
               frameBorder="0"
               allow="autoplay; fullscreen"
-              allowFullScreen>
-            </iframe>
-
+              allowFullScreen
+            ></iframe>
           </div>
         ) : (
           <img src={hero_banner} alt="hero-banner" className='banner-img' />
@@ -35,6 +36,10 @@ const Home = () => {
         </div>
       </div>
     </div>
+    <div className="hero-cards-wrapper">
+      <TitleCards/>
+    </div>
+    </>
   );
 };
 

@@ -85,3 +85,6 @@
   border-radius: 50%;
   cursor: pointer;
 }
+.video-container .close-btn:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
