@@ -3,6 +3,7 @@ import './Home.css';
 import Navbar from '../../Components/Navbar/Navbar.jsx';
 import TitleCards from '../../Components/TitleCards/TitleCards.jsx';
 import hero_banner from '../../assets/posters/ballerina-movie.jpg';
+import Footer from '../../Components/Footer/Footer.jsx';
 
 const Home = () => {
   const [playVideo, setPlayVideo] = useState(false);
@@ -39,6 +40,7 @@ const Home = () => {
     <div className="hero-cards-wrapper">
       <TitleCards/>
     </div>
+    <Footer/>
     </>
   );
 };
