@@ -1,5 +1,5 @@
 import './Navbar.css';
-import logo from '../../assets/netflex.png';
+import logo from '../../assets/netflex2.png';
 import searchicon from '../../assets/search.png';
 import bellicon from '../../assets/notification.png';
 import profileimg from '../../assets/user.png';

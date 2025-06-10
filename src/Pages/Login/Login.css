@@ -1,0 +1,92 @@
+.login{
+    height: 100vh;
+    width: 100%;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../assets/posters/movie.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 0 300px;
+}
+
+label{
+    color: white;
+    font-size: 15px;
+}
+
+.logo1{
+    width: 190px;
+    height: 110px;
+    margin: 0 auto;
+    display: block;
+
+}
+
+.login-form{
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 15px;
+    width: 500px;
+    padding: 30px;
+    margin: 0 130px;
+}
+
+.login-form h1{
+    color: white;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.input{
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.setbutton{
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: 0.3s ease;
+    width: 300px;
+    margin: 20px 75px;
+    box-sizing: border-box;
+}
+.setbutton:hover{
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+.form-help-text{
+    color: white;
+    font-size: 15px;
+    margin-left: 200px;  
+    cursor: pointer;
+}
+
+.remember {
+    display: flex;
+    align-items: center;
+}
+
+.form-switch{
+    margin-top: 10px;
+    color: #9b9292;
+}
+
+.form-switch span{
+    color: #fff;
+    margin-left: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}

@@ -38,7 +38,10 @@ const Home = () => {
       </div>
     </div>
     <div className="hero-cards-wrapper">
-      <TitleCards/>
+      <TitleCards title={"Now Playing"} category={"now_playing"} />
+      <TitleCards title={"Top Rated"} category={"top_rated"} />
+      <TitleCards title={"Popular"} category={"popular"} />
+      <TitleCards title={"Upcoming"} category={"upcoming"} />
     </div>
     <Footer/>
     </>

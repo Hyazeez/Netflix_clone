@@ -3,7 +3,9 @@ import './Player.css';
 
 const Player = () => {
   return (
-    <div className='player'>Player</div>
+    <div className='player'>
+      <img src="" alt="" />
+    </div>
   )
 }
 
