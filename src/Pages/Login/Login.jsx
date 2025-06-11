@@ -1,27 +1,40 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import './Login.css';
 import logo from '../../assets/netflex2.png';
+import {login, signup} from '../../firebase';
 
 const Login = () => {
   const[signState, setSignState] = useState("Sign In");
+  const[name,setName] = useState("");
+  const[email,setEmail] = useState("");
+  const[password,setPassword] = useState("");
+
+  const user_auth = async (e) => {
+    e.preventDefault();
+    if (signState === "Sign In") {
+      await login(email, password);
+    } else {
+      await signup(name, email, password);
+    }
+  }
   return (
     <div className='login'>
       <img src={logo} alt="Netflix Logo" className='logo1' />
       <div className="login-form">
         <h1>{signState}</h1>
-        <form>
+        <form onSubmit={user_auth}>
           {signState === "Sign Up" ? (
             <>
-              <label htmlFor="username">Username : <input type="text" placeholder="Username" className='input' /></label>
-              <label htmlFor="email">Email : <input type="email" placeholder="Email" className='input' /></label>
-              <label htmlFor="password">Password : <input type="password" placeholder="Password" className='input' /></label>
+              <label htmlFor="username">Username : <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Username" className='input' /></label>
+              <label htmlFor="email">Email : <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" className='input' /></label>
+              <label htmlFor="password">Password : <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" className='input' /></label>
               <button type="submit" className='setbutton'>Sign Up</button>
             </>
           ) : (
             <>
-              <label htmlFor="email">Email : <input type="email" placeholder="Email" className='input' /></label>
-              <label htmlFor="password">Password : <input type="password" placeholder="Password" className='input' /></label>
-              <button type="submit" className='setbutton'>Login</button>
+              <label htmlFor="email">Email : <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" className='input' /></label>
+              <label htmlFor="password">Password : <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" className='input' /></label>
+              <button type="submit" className='setbutton'>{signState}</button>
             </>
           )}
           <div className="form-help">

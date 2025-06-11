@@ -8,7 +8,7 @@
 .titlecards h2 {
   margin-bottom: 16px;
   margin-left: 8px;
-    font-size: 35px;
+  font-size: 35px;
 }
 
 .card-list {
@@ -72,8 +72,48 @@
 .card-list::-webkit-scrollbar {
   display: none;
 }
-
 .card-list {
-  -ms-overflow-style: none; 
-  scrollbar-width: none; 
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@media (max-width: 768px) {
+  .titlecards {
+    padding: 10px;
+  }
+
+  .titlecards h2 {
+    font-size: 28px;
+    margin-left: 5px;
+  }
+
+  .card {
+    min-width: 150px;
+    max-width: 160px;
+    margin: 10px 0 0 10px;
+  }
+
+  .card p {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .titlecards h2 {
+    font-size: 24px;
+  }
+
+  .card {
+    min-width: 120px;
+    max-width: 130px;
+    margin-left: 8px;
+  }
+
+  .card p {
+    font-size: 13px;
+  }
+
+  .card:hover {
+    transform: scale(1.03);
+  }
 }

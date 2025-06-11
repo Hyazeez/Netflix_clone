@@ -1,8 +1,9 @@
 
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getAuth } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
+import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { addDoc, collection, getFirestore } from "firebase/firestore";
+import { toast } from "react-toastify";
 
 const firebaseConfig = {
   apiKey: "AIzaSyC22qZ_4z9-15AzelII3kHuxsdglrToaVo",
@@ -19,6 +20,39 @@ const analytics = getAnalytics(app);
 const auth = getAuth(app); 
 const db = getFirestore(app);
 
-const signup = async(name, email, password) => {
+const signup = async (name, email, password) => {
+  try {
     
+    const res = await createUserWithEmailAndPassword(auth, email, password);
+    const user = res.user;
+
+    await addDoc(collection(db, "users"), {
+      uid: user.uid,
+      name: name,
+      authProvider: "local",
+      email: email,
+    });
+
+    return { success: true };
+  } catch (error) {
+    console.error("Error signing up:", error);
+    toast.error(error.code);
+  }
+};
+
+
+const login = async(email, password) => {
+  try {
+    const res1 = await signInWithEmailAndPassword(auth, email, password);
+    const user = res1.user;
+  } catch (error) {
+    console.error("Error logging in:", error);
+    toast.error(error.code);
+  }
 }
+
+const logout = () => {
+  signOut(auth);
+}; 
+
+export { app, analytics, auth, db, signup, login, logout};

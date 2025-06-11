@@ -4,6 +4,7 @@ import searchicon from '../../assets/search.png';
 import bellicon from '../../assets/notification.png';
 import profileimg from '../../assets/user.png';
 import cartimg from '../../assets/add-to-cart.png';
+import { logout } from '../../firebase';
 
 const Navbar = () => {
   return (
@@ -28,9 +29,7 @@ const Navbar = () => {
                 <div className="dropdown">
                     <button> ▾</button>
                     <div className="dropdown-content">
-                    <a href='#profile'>My profile</a>
-                    <a href='#log'>Logout</a>
-                    <a href='#settings'>Settings</a>
+                    <p onClick={() => logout()}>Logout</p>
                     </div>
                 </div>
             </div>

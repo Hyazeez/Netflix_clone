@@ -52,7 +52,7 @@
   margin-top: 10px;
   font-size: 15px;
   display: flex;
-  justify-content: left;
+  justify-content: flex-start;
   flex-direction: row;
   gap: 100px;
 }
@@ -73,7 +73,7 @@
 .footer-middle {
     display: flex;
     justify-content: center;
-    align-items: right;
+    align-items: flex-end;
     flex-direction: row;
 }
 
@@ -81,4 +81,69 @@
     text-align: center;
     font-size: 14px;
     color: #ccc;
+}
+
+@media (max-width: 1024px) {
+  .footer-icons {
+    margin-left: 0;
+  }
+  .footer-text {
+    gap: 40px;
+    font-size: 14px;
+  }
+  .footer-logo {
+    width: 120px;
+    margin-left: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-top,
+  .footer-middle,
+  .footer-text {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    text-align: center;
+  }
+  .footer-icons {
+    margin-left: 0;
+    flex-wrap: wrap;
+  }
+  .footer-logo {
+    margin-left: 0;
+    margin-bottom: 10px;
+    width: 100px;
+  }
+  .footer ul li {
+    margin: 10px 0;
+  }
+  .footer-text {
+    gap: 20px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    border-radius: 30px 30px 0 0;
+    padding: 10px 0;
+  }
+  .footer-logo {
+    width: 80px;
+  }
+  .footer-icons img {
+    width: 36px;
+    height: 36px;
+    margin: 6px 6px;
+  }
+  .footer-text {
+    font-size: 12px;
+    gap: 10px;
+    flex-direction: column;
+  }
+  .footer-bottom {
+    font-size: 12px;
+  }
 }
