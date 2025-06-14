@@ -15,9 +15,8 @@
 }
 
 .footer-icons img {
-  width: 50px;
-  height: 50px;
-  margin: 10px 10px;
+  width: 30px;
+  margin: 0 10px;
   cursor: pointer;
 }
 
@@ -71,10 +70,10 @@
 }
 
 .footer-middle {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    flex-direction: row;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
 }
 
 .footer-bottom {
@@ -96,6 +95,17 @@
     margin-left: 10px;
   }
 }
+
+.footer-links li a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-links li a:hover {
+  color: #fff;
+}
+
 
 @media (max-width: 768px) {
   .footer-top,

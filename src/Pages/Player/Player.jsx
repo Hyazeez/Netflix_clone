@@ -1,17 +1,15 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import React, { useEffect, useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import './Player.css';
 import BackArrowIcon from '../../assets/back.png';
 
 const Player = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
 
-  const [apiData, setApiData] = useState({
-    name: '',
-    key: '',
-    published_at: '',
-    type: ''
-  })
+  const [apiData, setApiData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   const options = {
     method: 'GET',
@@ -22,28 +20,63 @@ const Player = () => {
   };
 
   useEffect(() => {
+    setLoading(true);
+    setError(false);
+
     fetch(`https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`, options)
       .then(res => res.json())
       .then(res => {
-        if (res.results && res.results.length > 0) {
-          setApiData(res.results[0]);
+        const trailer = res.results?.find(
+          video => video.site === "YouTube" && video.type === "Trailer"
+        );
+
+        if (trailer) {
+          setApiData(trailer);
+        } else {
+          setError(true);
         }
+        setLoading(false);
       })
-      .catch(err => console.error(err));
+      .catch(err => {
+        console.error(err);
+        setError(true);
+        setLoading(false);
+      });
   }, [id]);
 
   return (
     <div className='player'>
-      <h1 style={{ color: 'white' }}>Movie ID: {id}</h1>
-      <img src={BackArrowIcon} alt="Back" />
-      <iframe src={`https://www.youtube.com/embed/${apiData.key}`} title="YouTube-Trailer" frameBorder="0" allowFullScreen width="100%" height="100%" className='video-iframe'></iframe>
-      <div className="player-info">
-        <p>{apiData.name}</p>
-        <p>{apiData.published_at.slice(0, 10)}</p>
-        <p>{apiData.type}</p>
-      </div>
-    </div>
-  )
-}
+      <img
+        src={BackArrowIcon}
+        alt="Back"
+        onClick={() => navigate(-1)}
+        className="back-icon"
+      />
 
-export default Player
+      {loading && <div className="spinner"></div>}
+
+      {!loading && error && <p style={{ color: 'red' }}>Trailer not available</p>}
+
+      {!loading && !error && (
+        <div className={`video-wrapper fade-in`}>
+          <iframe
+            src={`https://www.youtube.com/embed/${apiData.key}`}
+            title="YouTube Trailer"
+            className="video-iframe"
+            allowFullScreen
+          ></iframe>
+        </div>
+      )}
+
+      {!loading && apiData && (
+        <div className="player-info">
+          <p>{apiData.name}</p>
+          <p>{apiData.published_at?.slice(0, 10)}</p>
+          <p>{apiData.type}</p>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default Player;

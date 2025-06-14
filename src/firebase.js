@@ -45,14 +45,23 @@ const login = async(email, password) => {
   try {
     const res1 = await signInWithEmailAndPassword(auth, email, password);
     const user = res1.user;
+    return { success: true, user };
   } catch (error) {
     console.error("Error logging in:", error);
     toast.error(error.code);
+    return { success: false, error: error.code };
   }
 }
 
-const logout = () => {
-  signOut(auth);
-}; 
+const logout = async () => {
+  try {
+    await signOut(auth);
+    toast.success("Logged out successfully");
+  } catch (error) {
+    console.error("Error signing out:", error);
+    toast.error(error.code);
+  }
+};
+
 
 export { app, analytics, auth, db, signup, login, logout};

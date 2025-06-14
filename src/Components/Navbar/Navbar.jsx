@@ -6,6 +6,7 @@ import profileimg from '../../assets/user.png';
 import cartimg from '../../assets/add-to-cart.png';
 import { logout } from '../../firebase';
 
+
 const Navbar = () => {
   return (
     <div className='navbar'>
